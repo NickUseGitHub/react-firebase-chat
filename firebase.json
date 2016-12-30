@@ -7,9 +7,12 @@
     "ignore": [
       "firebase.json",
       "package.json",
+      "(webpack).*",
+      "yarn.lock",
       "**/.*",
       "**/node_modules/**",
-      "node_modules/**"
+      "node_modules/**",
+      ".vscode"
     ],
     "rewrites": [
       {
