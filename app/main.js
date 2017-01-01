@@ -1,1 +1,1 @@
-console.log("This is webpack");
+console.log("This is webpack with es6")

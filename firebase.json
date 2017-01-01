@@ -6,6 +6,7 @@
     "public": "public",
     "ignore": [
       "firebase.json",
+      "firebase-debug.log",
       "package.json",
       "(webpack).*",
       "yarn.lock",

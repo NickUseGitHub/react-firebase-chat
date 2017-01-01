@@ -1,8 +1,9 @@
-const path = require('path')
-const webpack = require('webpack')
+import path from 'path'
+import webpack from 'webpack'
+
 const appPath = path.resolve(__dirname, './app')
 
-module.exports = {
+export default {
     entry: {
         app: path.resolve(appPath, './main')
     },
