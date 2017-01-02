@@ -1,7 +1,7 @@
-import react from 'react'
+import React from 'react'
 import { render } from 'react-dom'
 
 render(
-  <h1>Hello, world!</h1>,
+  <h1>Sub, world!</h1>,
   document.getElementById('app')
 )

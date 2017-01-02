@@ -8,13 +8,6 @@ export default {
   entry: {
     app: path.resolve(appPath, './main.js')
   },
-  output: { 
-    path: path.resolve(buildPath, './dist/js'), 
-    filename:  '[name].js'
-  },
-  plugins: [
-      new webpack.optimize.UglifyJsPlugin()
-  ],
   module: {
     loaders: [
       {
@@ -24,4 +17,11 @@ export default {
       }
     ]
   },
+  plugins: [
+      new webpack.optimize.UglifyJsPlugin()
+  ],
+  output: { 
+    path: path.resolve(buildPath, './dist/js'), 
+    filename:  '[name].js'
+  }
 }
