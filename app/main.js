@@ -1,6 +1,7 @@
-function buildFF(msg1) {
-    return msg2 => console.log(`${msg1} what ${msg2}`) 
-}
+import react from 'react'
+import { render } from 'react-dom'
 
-const testFF = buildFF("yesss")
-testFF("naja")
+render(
+  <h1>Hello, world!</h1>,
+  document.getElementById('app')
+)
