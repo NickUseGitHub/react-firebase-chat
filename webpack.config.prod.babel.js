@@ -1,6 +1,6 @@
 import webpack from 'webpack'
 import path from 'path'
-import webpackConf from './webpack.config.dev.babel'
+import webpackConf from './webpack.config.babel'
 
 const productionPath = path.resolve(__dirname, './public')
 

@@ -17,9 +17,10 @@ export default {
       }
     ]
   },
-  plugins: [
-      new webpack.optimize.UglifyJsPlugin()
-  ],
+  devServer: {
+      contentBase: './dev',
+      inline: true
+  },
   output: { 
     path: path.resolve(buildPath, './dist/js'), 
     filename:  '[name].js'
