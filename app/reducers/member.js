@@ -1,3 +1,3 @@
-export default function(member = null, action) {
+export default function(member = {}, action) {
     return member
 }
