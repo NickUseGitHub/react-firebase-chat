@@ -1,7 +1,8 @@
 import React from 'react'
 import { Route, IndexRoute } from 'react-router'
-import Hello from './components/hello'
+import AppLayout from './components/appLayout'
 
 export default (
-    <Route path="/" component={Hello} />
+    <Route path="/" component={AppLayout}>
+    </Route>
 )
