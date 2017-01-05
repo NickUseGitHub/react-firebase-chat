@@ -1,6 +1,5 @@
-import { app, database } from 'firebase'
-
-database()
+import app from 'firebase/app'
+import database from 'firebase/database'
 
 export default app.initializeApp({
     apiKey: 'AIzaSyB1j2mm2zGqZMRzTGJzoiitUQ_mMDkpt8M',
