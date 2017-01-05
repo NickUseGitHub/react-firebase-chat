@@ -5,11 +5,11 @@ export default class TextBox extends Component {
         message: ''
     }
 
-    handleSubmit = () => (e) => {
+    handleSubmit = (e) => {
         e.preventDefault()
     }
 
-    handleTextChange = () => (e) => {
+    handleTextChange = (e) => {
         let message = e.target.value
         this.setState({message})
     }
@@ -17,8 +17,8 @@ export default class TextBox extends Component {
     render() {
         return (
             <div className="input-message">
-                <form onSubmit={this.handleSubmit()}>
-                    <input type="text" onChange={this.handleTextChange()} value={this.state.message} />
+                <form onSubmit={this.handleSubmit}>
+                    <input type="text" onChange={this.handleTextChange} value={this.state.message} />
                 </form>
             </div>
         )
