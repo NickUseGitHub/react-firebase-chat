@@ -17,7 +17,7 @@ export default class ChatRoom extends Component {
             name: item.name
         }
         
-        var newTodoKey = firebase.database().ref().child('todos').push().key
+        var newTodoKey = firebase.database().ref('/todos').push().key
         var updates = {}
         updates['/todos/' + newTodoKey] = todo
         firebase.database().ref().update(updates)
