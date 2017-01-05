@@ -1,3 +1,5 @@
-export default function(member = {}, action) {
+export default function(member = {
+    name: "Test User"
+}, action) {
     return member
 }
