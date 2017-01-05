@@ -8,7 +8,7 @@ import IndexPage from './components/IndexPage'
 
 export default (
     <Route path="/" component={AppLayout}>
-        <IndexRoute path="/" component={IndexPage} />
+        <IndexRoute component={IndexPage} />
         <Route path="/" component={IndexPage}>
             <Route path="/:chatRoomName" component={ChatRoom} />
         </Route>
