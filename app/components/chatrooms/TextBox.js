@@ -7,7 +7,6 @@ export default class TextBox extends Component {
 
     handleSubmit = () => (e) => {
         e.preventDefault()
-        alert(this.state.message)
     }
 
     handleTextChange = () => (e) => {
