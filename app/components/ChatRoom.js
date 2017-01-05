@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import firebase from '../lib/firebase/app'
+import { initDb } from '../lib/database/db'
 
 //Component
 import Messages from './chatrooms/Messages'
@@ -7,20 +7,15 @@ import TextBox from './chatrooms/TextBox'
 
 export default class ChatRoom extends Component {
 
+    db = null
+
     componentDidMount() {
-        console.log("componentDidMount()")
-        this.addTodo({name: "Hello world"})
+        this.db = initDb('/todos')
+        this.addTodo({name: "Hey jing di"})
     }
 
     addTodo(item) {
-        var todo = {
-            name: item.name
-        }
-        
-        var newTodoKey = firebase.database().ref('/todos').push().key
-        var updates = {}
-        updates['/todos/' + newTodoKey] = todo
-        firebase.database().ref().update(updates)
+        this.db.add(item)
     }
 
     render() {
