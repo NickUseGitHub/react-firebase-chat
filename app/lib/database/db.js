@@ -12,6 +12,10 @@ class Db {
         updates[newKey] = item
         this.db.update(updates)
     }
+
+    getDbObj() {
+        return this.db
+    }
 }
 
 export function initDb(ref) {

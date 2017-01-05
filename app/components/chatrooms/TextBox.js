@@ -1,12 +1,25 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { addMessage, initRoom } from '../../actions/message'
 
-export default class TextBox extends Component {
+class TextBox extends Component {
     state = {
         message: ''
     }
 
+    componentDidMount() {
+        const { selected_room, initRoom } = this.props
+        initRoom(selected_room)
+    }
+
     handleSubmit = (e) => {
         e.preventDefault()
+
+        const { message } = this.state
+        const { member, addMessage, initRoom } = this.props
+
+        addMessage({ detail: message, member })
+        this.setState({ message: '' })
     }
 
     handleTextChange = (e) => {
@@ -24,3 +37,12 @@ export default class TextBox extends Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        member: state.member,
+        selected_room: state.selected_room
+    }
+}
+
+export default connect(mapStateToProps, { addMessage, initRoom })(TextBox)
