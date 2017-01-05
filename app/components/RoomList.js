@@ -1,17 +1,25 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router'
 
-export default class RoomList extends Component {
+class RoomList extends Component {
     render() {
+        const { rooms } = this.props
+
         return (
             <div className="col-xs-4 room-list">
                 <ul className="room-list">
-                    <li><Link to="/chatRoom1">Room 1</Link></li>
-                    <li><Link to="/chatRoom2">Room 2</Link></li>
-                    <li><Link to="/chatRoom3">Room 3</Link></li>
-                    <li><Link to="/chatRoom4">Room 4</Link></li>
+                    {rooms.map(room => <li key={room.id} ><Link to={`/${room.name}`}>{room.name}</Link></li>)}
                 </ul>
             </div>
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        rooms: state.rooms
+    }
+}
+
+export default connect(mapStateToProps)(RoomList)
