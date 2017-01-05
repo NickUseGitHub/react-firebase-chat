@@ -4,7 +4,11 @@ import is from 'is_js'
 
 class IndexPage extends Component {
     render() {
-        return <div>Hello {this.props.member.username} {this.props.member.password} </div>
+        return (
+            <div className="row">
+                <div className="jumbotron"><h1>Hello {this.props.member.name}</h1></div>
+            </div>
+        )
     }
 }
 
