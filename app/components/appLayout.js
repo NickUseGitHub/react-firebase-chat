@@ -14,7 +14,7 @@ class AppLayout extends Component {
                 return <Login />
             }
 
-        return <IndexPage />
+        return this.props.children
     }
 
     render() {

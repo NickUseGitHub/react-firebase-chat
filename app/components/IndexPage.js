@@ -11,6 +11,7 @@ class IndexPage extends Component {
             <div className="row">
                 <div className="jumbotron"><h1>Hello {this.props.member.name}</h1></div>
                 <RoomList />
+                {this.props.children}
             </div>
         )
     }
