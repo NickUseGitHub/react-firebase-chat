@@ -1,16 +1,16 @@
 export function addMessage(message) {
     return {
         type: 'ADD_MESSAGE',
-        message
+        payload: {messages: [message]}
     }
 }
 
-export function changeMessage(message) {
-    const tmessages =  Object.entries(message)
+export function changeMessage(messages) {
+    const tmessages =  Object.entries(messages)
     console.log("messageActionCreator", tmessages)
 
     return {
         type: 'MESSAGES_CHANGED',
-        message: []
+        payload: {messages: [message]}
     }
 }
