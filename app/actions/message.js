@@ -6,11 +6,11 @@ export function addMessage(message) {
 }
 
 export function changeMessage(messages) {
-    const tmessages =  Object.entries(messages)
-    console.log("messageActionCreator", tmessages)
+    // const tmessages =  Object.entries(messages)
+    // console.log("messageActionCreator", tmessages)
 
     return {
         type: 'MESSAGES_CHANGED',
-        payload: {messages: [message]}
+        payload: {messages: []}
     }
 }

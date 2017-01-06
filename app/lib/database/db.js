@@ -7,8 +7,13 @@ class Db {
     }
 
     add(item) {
-        const newItem = this.db.push()
-        newItem.set(item)
+        const prom = new Promise((resolve, reject) => {
+            const newItem = this.db.push()
+            item._id = newItem.key
+            newItem.set(item)
+            resolve(item)
+        })
+        return prom
     }
 
     getDbObj() {

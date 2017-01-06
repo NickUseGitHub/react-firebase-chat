@@ -7,7 +7,7 @@ export default function(messages = [], action) {
             return messages
 
         case 'MESSAGES_CHANGED': 
-            messages = action.messages
+            messages = payload.messages
         default: return messages
     }
 }

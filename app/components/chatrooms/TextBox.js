@@ -11,10 +11,13 @@ class TextBox extends Component {
         e.preventDefault()
 
         const { message } = this.state
-        const { member, addMessage } = this.props
+        const { addMessage, db, member } = this.props
+        const message_for_add = { detail: message, member }
 
-        addMessage({ detail: message, member })
-        this.setState({ message: '' })
+        db.add(message_for_add).then(msg => {
+            this.setState({ message: '' })
+            addMessage(msg)
+        })
     }
 
     handleTextChange = (e) => {

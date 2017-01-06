@@ -13,12 +13,10 @@ class ChatRoom extends Component {
 
     componentDidMount() {
         this.db.getDbObj().once('value').then(snap => changeMessage(snap.val()) )
-        console.log("ChatRoom Component:", this.db)
     }
 
     componentDidUpdate() {
         this.db = initDb(`/messages/${this.props.selected_room.name}`)
-        console.log("ChatRoom Component:", this.db)
     }
 
     render() {
@@ -28,8 +26,8 @@ class ChatRoom extends Component {
             <div className="col-xs-8 chatroom">
                 <h2>{selected_room.name}</h2>
                 <div className="row">
-                    <Messages />
-                    <TextBox />
+                    <Messages db={this.db} />
+                    <TextBox db={this.db} />
                 </div>
             </div>
         )
