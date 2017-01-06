@@ -7,10 +7,8 @@ class Db {
     }
 
     add(item) {
-        const newKey = this.db.push().key
-        const updates = {}
-        updates[newKey] = item
-        this.db.update(updates)
+        const newItem = this.db.push()
+        newItem.set(item)
     }
 
     getDbObj() {
