@@ -15,7 +15,9 @@ class ChatRoom extends Component {
         const { changeMessage } = this.props
 
         this.db.getDbObj().on('value', snap => {
-            changeMessage(snap.val())
+            console.log("What")
+            const messages = snap.val() ? Object.values(snap.val()) : []
+            changeMessage(messages)
         })
     }
 
