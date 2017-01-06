@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addMessage, changeMessage } from '../../actions/message'
+import { changeMessage } from '../../actions/message'
 
 class TextBox extends Component {
     state = {
@@ -11,12 +11,11 @@ class TextBox extends Component {
         e.preventDefault()
 
         const { message } = this.state
-        const { addMessage, db, member } = this.props
+        const { db, member } = this.props
         const message_for_add = { detail: message, member }
 
         db.add(message_for_add).then(msg => {
             this.setState({ message: '' })
-            addMessage(msg)
         })
     }
 
@@ -43,4 +42,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { addMessage, changeMessage })(TextBox)
+export default connect(mapStateToProps, { changeMessage })(TextBox)

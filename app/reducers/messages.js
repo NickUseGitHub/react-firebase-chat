@@ -6,7 +6,7 @@ export default function(messages = [], action) {
             messages = messages.concat(payload.messages)
             return messages
 
-        case 'MESSAGES_CHANGED': 
+        case 'MESSAGES_CHANGED':
             messages = payload.messages
         default: return messages
     }

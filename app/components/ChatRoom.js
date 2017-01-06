@@ -12,7 +12,11 @@ class ChatRoom extends Component {
     db = initDb(`/messages/${this.props.selected_room.name}`)
 
     componentDidMount() {
-        this.db.getDbObj().once('value').then(snap => changeMessage(snap.val()) )
+        const { changeMessage } = this.props
+
+        this.db.getDbObj().on('value', snap => {
+            changeMessage(snap.val())
+        })
     }
 
     componentDidUpdate() {

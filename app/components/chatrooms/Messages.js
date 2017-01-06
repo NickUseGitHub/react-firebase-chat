@@ -10,7 +10,7 @@ class Messages extends Component {
             return <li>no message</li>
         }
 
-        return this.props.messages.map(message => <li><span className="label label-success">{message.user.name}</span> {message.detail}</li>)
+        return this.props.messages.map(message => <li key={message._id}><span className="label label-success">{message.member.name}</span> {message.detail}</li>)
     }
     
     render() {
