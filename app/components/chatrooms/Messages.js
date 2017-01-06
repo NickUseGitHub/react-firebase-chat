@@ -1,8 +1,15 @@
 import React, { Component } from 'react'
 import is from 'is_js'
 import { connect } from 'react-redux'
+import { initDb } from '../../lib/database/db'
 
 class Messages extends Component {
+
+    // db = initDb(`/messages/${room.name}`)
+    componentDidMount() {
+        console.log(this.props.selected_room)
+    }
+
     renderMessage() {
         if (is.empty(this.props.messages)) {
             return <li>no message</li>
@@ -24,7 +31,8 @@ class Messages extends Component {
 
 function mapStateToProps(state) {
     return {
-        messages: state.messages
+        messages: state.messages,
+        selected_room: state.selected_room
     }
 }
 

@@ -1,15 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addMessage, initRoom } from '../../actions/message'
+import { changeMessage } from '../../actions/message'
 
 class TextBox extends Component {
     state = {
         message: ''
-    }
-
-    componentDidMount() {
-        const { selected_room, initRoom } = this.props
-        initRoom(selected_room)
     }
 
     handleSubmit = (e) => {
@@ -45,4 +40,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { addMessage, initRoom })(TextBox)
+export default connect(mapStateToProps, { changeMessage })(TextBox)
