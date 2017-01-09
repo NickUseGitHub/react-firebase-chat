@@ -9,11 +9,19 @@ import TextBox from './chatrooms/TextBox'
 
 class ChatRoom extends Component {
 
-    db = initDb(`/messages/${this.props.selected_room.name}`)
+    db = null
+    
+    constructor(props) {
+        super(props)
+        this.db = initDb(`/messages/${this.props.selected_room.name}`)
+        console.log("constructor() -- db", this.db)
+        console.log("constructor() -- db", this.props)
+        this.attachFirebase()
+    }
 
-    componentDidMount() {
+    attachFirebase() {
+        // console.log("attachFirebase()")
         const { changeMessage } = this.props
-
         this.db.getDbObj().on('value', snap => {
             console.log("What")
             const messages = snap.val() ? Object.values(snap.val()) : []
@@ -21,8 +29,20 @@ class ChatRoom extends Component {
         })
     }
 
+    detachFirebase() {
+        this.db.getDbObj().off()
+    }
+
+    componentWillUpdate() {
+        const { changeMessage } = this.props
+        changeMessage([])
+        this.detachFirebase()
+    }
+
     componentDidUpdate() {
         this.db = initDb(`/messages/${this.props.selected_room.name}`)
+        console.log("componentDidMount() -- db", this.db)
+        this.attachFirebase()
     }
 
     render() {
