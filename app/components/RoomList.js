@@ -19,7 +19,6 @@ class RoomList extends Component {
     createDB(props) {
         const { firebaseDB } = props
         this.db = initDb(firebaseDB.ref('/Rooms'))
-        console.log("RoomList constructor", this.db)
     }
 
     componentDidMount() {

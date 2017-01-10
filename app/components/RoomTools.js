@@ -26,7 +26,6 @@ class RoomTools extends Component {
         e.preventDefault()
         const { member } = this.props
         const room = { name : this.state.roomName , member }
-        console.log("handleSubmit()", room)
         this.db.add(room).then(res => {
             this.setState({roomName: ''})
         })
