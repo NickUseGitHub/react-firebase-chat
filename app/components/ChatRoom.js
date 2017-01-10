@@ -42,6 +42,10 @@ class ChatRoom extends Component {
         this.attachFirebase()
     }
 
+    componentUnMount() {
+        this.detachFirebase()
+    }
+
     render() {
         const { selected_room } = this.props
 
