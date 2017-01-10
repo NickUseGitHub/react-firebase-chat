@@ -29,14 +29,12 @@ class ChatRoom extends Component {
         this.db.getDbObj().off()
     }
 
-    componentWillUpdate() {
+    componentWillUpdate(nextProps, nextState) {
+        console.log("ChatRoom componentWillUpdate(nextProps)", nextProps)
         const { changeMessage } = this.props
         changeMessage([])
         this.detachFirebase()
-    }
-
-    componentDidUpdate() {
-        this.db = initDb(`/messages/${this.props.selected_room.name}`)
+        this.db = initDb(`/messages/${nextProps.selected_room.name}`)
         this.attachFirebase()
     }
 
