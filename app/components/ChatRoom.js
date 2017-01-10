@@ -14,16 +14,12 @@ class ChatRoom extends Component {
     constructor(props) {
         super(props)
         this.db = initDb(`/messages/${this.props.selected_room.name}`)
-        console.log("constructor() -- db", this.db)
-        console.log("constructor() -- db", this.props)
         this.attachFirebase()
     }
 
     attachFirebase() {
-        // console.log("attachFirebase()")
         const { changeMessage } = this.props
         this.db.getDbObj().on('value', snap => {
-            console.log("What")
             const messages = snap.val() ? Object.values(snap.val()) : []
             changeMessage(messages)
         })
@@ -41,7 +37,6 @@ class ChatRoom extends Component {
 
     componentDidUpdate() {
         this.db = initDb(`/messages/${this.props.selected_room.name}`)
-        console.log("componentDidMount() -- db", this.db)
         this.attachFirebase()
     }
 
