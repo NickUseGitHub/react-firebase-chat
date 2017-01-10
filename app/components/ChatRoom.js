@@ -30,7 +30,6 @@ class ChatRoom extends Component {
     }
 
     componentWillUpdate(nextProps, nextState) {
-        console.log("ChatRoom componentWillUpdate(nextProps)", nextProps)
         const { changeMessage } = this.props
         changeMessage([])
         this.detachFirebase()
