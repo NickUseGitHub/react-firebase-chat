@@ -4,7 +4,7 @@ import is from 'is_js'
 import firebase from '../lib/firebase/app'
 
 //action creator
-import { initDb } from '../actions/db'
+import { initFirebaseDb } from '../actions/firebase-db'
 
 //Components
 import RoomList from './RoomList'
@@ -12,8 +12,8 @@ import RoomList from './RoomList'
 class IndexPage extends Component {
 
     componentWillMount() {
-        const { initDb } = this.props
-        initDb(firebase.database())
+        const { initFirebaseDb } = this.props
+        initFirebaseDb(firebase.database())
     }
 
     render() {
@@ -34,4 +34,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { initDb })(IndexPage)
+export default connect(mapStateToProps, { initFirebaseDb })(IndexPage)
