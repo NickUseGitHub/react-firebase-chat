@@ -1,8 +1,7 @@
 import firebase from '../firebase/app'
 
 class Db {
-    constructor(ref, db) {
-        this.ref = ref
+    constructor(db) {
         this.db = db
     }
 
@@ -21,7 +20,6 @@ class Db {
     }
 }
 
-export function initDb(ref) {
-    const db = firebase.database().ref(ref)
-    return new Db(ref, db)
+export function initDb(db) {
+    return new Db(db)
 }

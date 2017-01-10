@@ -13,8 +13,13 @@ class ChatRoom extends Component {
     
     constructor(props) {
         super(props)
-        this.db = initDb(`/messages/${this.props.selected_room.name}`)
+        this.createDb(props)
         this.attachFirebase()
+    }
+
+    createDb(props) {
+        const { firebaseDB, selected_room } = props
+        this.db = initDb(firebaseDB.ref(`/messages/${selected_room.name}`))
     }
 
     attachFirebase() {
@@ -33,7 +38,7 @@ class ChatRoom extends Component {
         const { changeMessage } = this.props
         changeMessage([])
         this.detachFirebase()
-        this.db = initDb(`/messages/${nextProps.selected_room.name}`)
+        this.createDb(nextProps)
         this.attachFirebase()
     }
 
@@ -54,6 +59,7 @@ class ChatRoom extends Component {
 
 function mapStateToProps(state) {
     return {
+        firebaseDB: state.firebaseDB,
         selected_room: state.selected_room
     }
 }
