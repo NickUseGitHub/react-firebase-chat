@@ -31,8 +31,7 @@ class IndexPage extends Component {
 
 function mapStateToProps(state) {
     return {
-        member: state.member,
-        firebaseDB: state.firebaseDB
+        member: state.member
     }
 }
 
