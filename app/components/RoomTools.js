@@ -2,9 +2,6 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import { initDb } from '../lib/database/db'
 
-//actions
-import { addRoom } from '../actions/chatroom'
-
 class RoomTools extends Component {
 
     state = {
@@ -27,11 +24,10 @@ class RoomTools extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        const { addRoom, member } = this.props
+        const { member } = this.props
         const room = { name : this.state.roomName , member }
         console.log("handleSubmit()", room)
         this.db.add(room).then(res => {
-            addRoom(room)
             this.setState({roomName: ''})
         })
     } 
@@ -55,4 +51,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { addRoom })(RoomTools);
+export default connect(mapStateToProps)(RoomTools);

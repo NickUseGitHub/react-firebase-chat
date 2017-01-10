@@ -18,6 +18,10 @@ class Db {
     getDbObj() {
         return this.db
     }
+
+    detachEventListener() {
+        this.db.off()
+    }
 }
 
 export function initDb(db) {

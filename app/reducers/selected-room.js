@@ -2,10 +2,8 @@ export default function(selected_room = null, action) {
     const { type, payload } = action
 
     switch(type) {
-        case 'ADD_ROOM': 
-        case 'INIT_ROOM': 
+        case 'SELECT_ROOM': 
             selected_room = payload.room
-            return selected_room
         default: return selected_room
     }
 }

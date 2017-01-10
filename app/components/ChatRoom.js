@@ -31,7 +31,7 @@ class ChatRoom extends Component {
     }
 
     detachFirebase() {
-        this.db.getDbObj().off()
+        this.db.detachEventListener()
     }
 
     componentWillUpdate(nextProps, nextState) {
