@@ -47,7 +47,7 @@ class ChatRoom extends Component {
             <div className="col-xs-8 chatroom">
                 <h2>{selected_room.name}</h2>
                 <div className="row">
-                    <Messages db={this.db} />
+                    <Messages />
                     <TextBox db={this.db} />
                 </div>
             </div>
