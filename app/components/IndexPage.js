@@ -8,6 +8,7 @@ import { initFirebaseDb } from '../actions/firebase-db'
 
 //Components
 import RoomList from './RoomList'
+import RoomTools from './RoomTools'
 
 class IndexPage extends Component {
 
@@ -20,6 +21,7 @@ class IndexPage extends Component {
         return (
             <div className="row">
                 <div className="jumbotron"><h1>Hello {this.props.member.name}</h1></div>
+                <RoomTools />
                 <RoomList />
                 {this.props.children}
             </div>
