@@ -19,6 +19,7 @@ export default {
   },
   devServer: {
       contentBase: './dev',
+      historyApiFallback: true,
       inline: true
   },
   output: { 
