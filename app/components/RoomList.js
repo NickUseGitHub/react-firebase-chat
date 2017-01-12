@@ -4,7 +4,6 @@ import { initDb } from '../lib/database/db'
 import { Link } from 'react-router'
 
 //actions
-import { selectRoom } from '../actions/chatroom'
 import { initRooms } from '../actions/rooms'
 
 class RoomList extends Component {
@@ -24,11 +23,6 @@ class RoomList extends Component {
     componentDidMount() {
         const { initRooms } = this.props
         this.db.getDbObj().on('value', snap => initRooms(Object.values(snap.val())))
-    }
-
-    selectRoom = (room) => () => {
-        const { selectRoom } = this.props
-        selectRoom(room)
     }
 
     render() {
@@ -51,4 +45,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { selectRoom, initRooms })(RoomList)
+export default connect(mapStateToProps, { initRooms })(RoomList)
