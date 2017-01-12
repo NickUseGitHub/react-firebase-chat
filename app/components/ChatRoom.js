@@ -27,7 +27,6 @@ class ChatRoom extends Component {
         const { chatRoomId } = params
         const db = initDb(firebaseDB.ref(`/Rooms/${chatRoomId}`))
         db.getDbObj().once('value').then(snap => selectRoom(snap.val()))
-        selectRoom
     }
 
     createDb(props) {

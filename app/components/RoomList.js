@@ -5,6 +5,7 @@ import { Link } from 'react-router'
 
 //actions
 import { initRooms } from '../actions/rooms'
+import { selectRoom } from '../actions/chatroom'
 
 class RoomList extends Component {
 
@@ -25,13 +26,18 @@ class RoomList extends Component {
         this.db.getDbObj().on('value', snap => initRooms(Object.values(snap.val())))
     }
 
+    selectRoom = (room) => () => {
+        const { selectRoom } = this.props
+        selectRoom(room)
+    }
+
     render() {
         const { rooms } = this.props
 
         return (
             <div className="col-xs-4 room-list">
                 <ul className="room-list">
-                    {rooms.map(room => <li key={room._id}><Link to={`/${room._id}`}>{room.name}</Link></li>)}
+                    {rooms.map(room => <li onClick={this.selectRoom(room)} key={room._id}><Link to={`/${room._id}`}>{room.name}</Link></li>)}
                 </ul>
             </div>
         )
@@ -45,4 +51,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { initRooms })(RoomList)
+export default connect(mapStateToProps, { initRooms, selectRoom })(RoomList)
