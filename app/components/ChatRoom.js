@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { initDb } from '../lib/database/db'
+
+//action
 import { changeMessage } from '../actions/message'
+import { selectRoom } from '../actions/chatroom'
 
 //Component
 import Messages from './chatrooms/Messages'
 import TextBox from './chatrooms/TextBox'
+
 
 class ChatRoom extends Component {
 
@@ -14,7 +18,16 @@ class ChatRoom extends Component {
     constructor(props) {
         super(props)
         this.createDb(props)
+        this.initRoom(props)
         this.attachFirebase()
+    }
+
+    initRoom(props) {
+        const { selectRoom, firebaseDB, params } = props
+        const { chatRoomId } = params
+        const db = initDb(firebaseDB.ref(`/Rooms/${chatRoomId}`))
+        db.getDbObj().once('value').then(snap => selectRoom(snap.val()))
+        selectRoom
     }
 
     createDb(props) {
@@ -52,7 +65,7 @@ class ChatRoom extends Component {
 
         return (
             <div className="col-xs-8 chatroom">
-                <h2>Hello eie</h2>
+                <h2>{ selected_room? selected_room.name : 'loading...' }</h2>
                 <div className="row">
                     <Messages />
                     <TextBox db={this.db} />
@@ -69,4 +82,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { changeMessage })(ChatRoom)
+export default connect(mapStateToProps, { changeMessage, selectRoom })(ChatRoom)
