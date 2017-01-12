@@ -37,7 +37,7 @@ class RoomList extends Component {
         return (
             <div className="col-xs-4 room-list">
                 <ul className="room-list">
-                    {rooms.map(room => <li key={room._id} onClick={this.selectRoom(room)} ><Link to={`/${room.name}`}>{room.name}</Link></li>)}
+                    {rooms.map(room => <li key={room._id}><Link to={`/${room._id}`}>{room.name}</Link></li>)}
                 </ul>
             </div>
         )

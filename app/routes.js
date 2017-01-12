@@ -10,7 +10,7 @@ export default (
     <Route path="/" component={AppLayout}>
         <IndexRoute component={IndexPage} />
         <Route path="/" component={IndexPage}>
-            <Route path="/:chatRoomName" component={ChatRoom} />
+            <Route path="/:chatRoomId" component={ChatRoom} />
         </Route>
     </Route>
 )

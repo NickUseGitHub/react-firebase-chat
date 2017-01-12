@@ -18,8 +18,10 @@ class ChatRoom extends Component {
     }
 
     createDb(props) {
-        const { firebaseDB, selected_room } = props
-        this.db = initDb(firebaseDB.ref(`/messages/${selected_room._id}`))
+        console.log("createDb", props)
+        const { firebaseDB, params } = props
+        const { chatRoomId } = params
+        this.db = initDb(firebaseDB.ref(`/messages/${chatRoomId}`))
     }
 
     attachFirebase() {
@@ -51,7 +53,7 @@ class ChatRoom extends Component {
 
         return (
             <div className="col-xs-8 chatroom">
-                <h2>{selected_room.name}</h2>
+                <h2>Hello eie</h2>
                 <div className="row">
                     <Messages />
                     <TextBox db={this.db} />
