@@ -38,7 +38,9 @@ export default class firebaseAPI {
 
     static attach(options) {
         const { ref, action } = options
-        firebase.database().ref(ref).on('value', action)
+        firebase.database().ref(ref).on('value', snap => {
+            action(snap.val())
+        })
     }
 
     static distach(options) {

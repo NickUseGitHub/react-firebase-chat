@@ -16,6 +16,8 @@ export default function(rooms = [], action) {
     const { type, payload } = action
 
     switch(action.type) {
+        case 'ATTACH_ROOMS':
+            return getRooms(payload)
         case 'INIT_ROOMS': 
             rooms = getRooms(payload)
         default: return rooms

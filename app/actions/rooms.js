@@ -4,3 +4,10 @@ export function initRooms(payload) {
         payload
     }
 }
+
+export function attachRooms(payload) {
+    return {
+        type: 'ATTACH_ROOMS',
+        payload
+    }
+}

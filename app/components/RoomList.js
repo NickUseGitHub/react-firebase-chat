@@ -2,23 +2,25 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { initDb } from '../lib/database/db'
 import { Link } from 'react-router'
-import firebase from 'firebase/app'
+import firebaseAPI from '../utils/db/firebaseAPI'
 
 //actions
-import { initRooms } from '../actions/rooms'
+import { attachRooms, initRooms } from '../actions/rooms'
 import { selectRoom } from '../actions/chatroom'
 
 class RoomList extends Component {
 
+    ref = '/Rooms'
+
     componentDidMount() {
-        this.connectData()
+        const { initRooms } = this.props
+        firebaseAPI.attach({ref: this.ref, action: (snap) => initRooms({snap}) })
     }
 
     connectData() {
-        const { initRooms } = this.props
         const database = {
             method: 'get',
-            options : {ref: '/Rooms'}
+            options : {ref: this.ref}
         }
         initRooms({database})
     }
@@ -47,4 +49,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { initRooms, selectRoom })(RoomList)
+export default connect(mapStateToProps, { attachRooms, initRooms, selectRoom })(RoomList)
