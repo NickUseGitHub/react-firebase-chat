@@ -15,50 +15,6 @@ class ChatRoom extends Component {
 
     db = null
     
-    constructor(props) {
-        super(props)
-        this.createDb(props)
-        this.initRoom(props)
-        // this.attachFirebase()
-    }
-
-    initRoom(props) {
-        const { selectRoom, params } = props
-        const { chatRoomId } = params
-        // const db = initDb(firebaseDB.ref(`/Rooms/${chatRoomId}`))
-        // db.getDbObj().once('value').then(snap => selectRoom(snap.val()))
-    }
-
-    createDb(props) {
-        const { params } = props
-        const { chatRoomId } = params
-        // this.db = initDb(firebaseDB.ref(`/messages/${chatRoomId}`))
-    }
-
-    attachFirebase() {
-        const { changeMessage } = this.props
-        this.db.getDbObj().on('value', snap => {
-            const messages = snap.val() ? Object.values(snap.val()) : []
-            changeMessage(messages)
-        })
-    }
-
-    detachFirebase() {
-        this.db.detachEventListener()
-    }
-
-    componentWillUpdate(nextProps, nextState) {
-        const { changeMessage } = this.props
-        changeMessage([])
-        this.detachFirebase()
-        this.createDb(nextProps)
-        // this.attachFirebase()
-    }
-
-    componentUnMount() {
-        this.detachFirebase()
-    }
-
     render() {
         const { selected_room } = this.props
 
@@ -76,7 +32,6 @@ class ChatRoom extends Component {
 
 function mapStateToProps(state) {
     return {
-        firebaseDB: state.firebaseDB,
         selected_room: state.selected_room
     }
 }
