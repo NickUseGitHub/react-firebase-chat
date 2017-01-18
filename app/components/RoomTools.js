@@ -17,7 +17,7 @@ class RoomTools extends Component {
 
     createDB(props) {
         const { firebaseDB } = props
-        this.db = initDb(firebaseDB.ref('/Rooms'))
+        // this.db = initDb(firebaseDB.ref('/Rooms'))
     }
 
     handleInputChange = type => e => this.setState({ [type]: e.target.value })

@@ -1,4 +1,4 @@
-import firebase from '../lib/firebase/app'
+import firebase from 'firebase/app'
 
 export default class firebaseAPI {
     static add(option, item) {

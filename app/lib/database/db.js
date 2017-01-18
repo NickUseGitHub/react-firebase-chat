@@ -1,5 +1,3 @@
-import firebase from '../firebase/app'
-
 class Db {
     constructor(db) {
         this.db = db

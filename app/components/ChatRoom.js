@@ -19,20 +19,20 @@ class ChatRoom extends Component {
         super(props)
         this.createDb(props)
         this.initRoom(props)
-        this.attachFirebase()
+        // this.attachFirebase()
     }
 
     initRoom(props) {
-        const { selectRoom, firebaseDB, params } = props
+        const { selectRoom, params } = props
         const { chatRoomId } = params
-        const db = initDb(firebaseDB.ref(`/Rooms/${chatRoomId}`))
-        db.getDbObj().once('value').then(snap => selectRoom(snap.val()))
+        // const db = initDb(firebaseDB.ref(`/Rooms/${chatRoomId}`))
+        // db.getDbObj().once('value').then(snap => selectRoom(snap.val()))
     }
 
     createDb(props) {
-        const { firebaseDB, params } = props
+        const { params } = props
         const { chatRoomId } = params
-        this.db = initDb(firebaseDB.ref(`/messages/${chatRoomId}`))
+        // this.db = initDb(firebaseDB.ref(`/messages/${chatRoomId}`))
     }
 
     attachFirebase() {
@@ -52,7 +52,7 @@ class ChatRoom extends Component {
         changeMessage([])
         this.detachFirebase()
         this.createDb(nextProps)
-        this.attachFirebase()
+        // this.attachFirebase()
     }
 
     componentUnMount() {
@@ -67,7 +67,7 @@ class ChatRoom extends Component {
                 <h2>{ selected_room? selected_room.name : 'loading...' }</h2>
                 <div className="row">
                     <Messages />
-                    <TextBox db={this.db} />
+                    <TextBox />
                 </div>
             </div>
         )

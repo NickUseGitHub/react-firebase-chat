@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import is from 'is_js'
-import firebase from '../lib/firebase/app'
+import firebase from 'firebase/app'
 
 //action creator
-import { initFirebaseDb } from '../actions/firebase-db'
+// import { initFirebaseDb } from '../actions/firebase-db'
 
 //Components
 import RoomList from './RoomList'
@@ -13,8 +13,8 @@ import RoomTools from './RoomTools'
 class IndexPage extends Component {
 
     componentWillMount() {
-        const { initFirebaseDb } = this.props
-        initFirebaseDb(firebase.database())
+        // const { initFirebaseDb } = this.props
+        // initFirebaseDb(firebase.database())
     }
 
     render() {
@@ -35,4 +35,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { initFirebaseDb })(IndexPage)
+export default connect(mapStateToProps)(IndexPage)
