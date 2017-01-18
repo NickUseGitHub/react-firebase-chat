@@ -14,7 +14,18 @@ export default class firebaseAPI {
         return prom
     }
 
+    static get(option) {
+        const { ref } = option
+        return firebase.database().once('value')
+    }
+
     static attach(option) {
-        
+        const { ref, callback } = option
+        firebase.database().ref(ref).on('value', callback)
+    }
+
+    static distach(option) {
+        const { ref } = option
+        firebase.database().ref(ref).off()
     }
 }
