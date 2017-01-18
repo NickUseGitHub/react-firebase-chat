@@ -1,6 +1,7 @@
-export function changeMessage(messages) {
+export function changeMessage(payload) {
+    console.log("changeMessage", payload)
     return {
         type: 'MESSAGES_CHANGED',
-        payload: {messages: messages}
+        payload
     }
 }
