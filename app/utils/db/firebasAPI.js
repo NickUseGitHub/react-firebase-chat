@@ -1,4 +1,5 @@
 import firebase from 'firebase/app'
+import is from 'is_js'
 
 export default class firebaseAPI {
     static add(option, item) {
@@ -15,13 +16,20 @@ export default class firebaseAPI {
     }
 
     static get(option) {
-        const { ref } = option
-        return firebase.database().once('value')
+        const { ref, type } = option
+
+        const prom = new Promise((resolve, reject)=>{
+            firebase.database().ref(ref).once('value').then(snap=>{
+                resolve(snap.val())
+            })
+        })
+        
+        return prom
     }
 
     static attach(option) {
-        const { ref, callback } = option
-        firebase.database().ref(ref).on('value', callback)
+        const { ref, action } = option
+        firebase.database().ref(ref).on('value', action)
     }
 
     static distach(option) {
