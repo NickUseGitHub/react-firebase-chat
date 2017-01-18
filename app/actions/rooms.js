@@ -1,6 +1,6 @@
-export function initRooms(rooms) {
+export function initRooms(payload) {
     return {
         type: 'INIT_ROOMS',
-        payload: {rooms}
+        payload
     }
 }

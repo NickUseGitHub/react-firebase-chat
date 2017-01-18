@@ -10,15 +10,17 @@ import { selectRoom } from '../actions/chatroom'
 
 class RoomList extends Component {
 
-    db = null
-
-    constructor(props) {
-        super(props)
+    componentDidMount() {
+        this.connectData()
     }
 
-    componentDidMount() {
+    connectData() {
         const { initRooms } = this.props
-        firebase.database().ref('/Rooms').on('value', snap => initRooms(Object.values(snap.val())))
+        const database = {
+            method: 'get',
+            options : {ref: '/Rooms'}
+        }
+        initRooms({database})
     }
 
     selectRoom = (room) => () => {

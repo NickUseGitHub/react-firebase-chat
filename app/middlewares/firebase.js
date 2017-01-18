@@ -6,8 +6,8 @@ export default store => next => action => {
 
     const { type, payload } = action
     const { database, ...rest } = payload
-    if (   is.not.empty(database) 
-        && is.not.undefined(database)) {
+    if (is.not.empty(database) 
+    && is.not.undefined(database)) {
         const { method, options } = database
         firebaseAPI[method](options).then(snap => {
             next({type, payload: {snap, ...rest} })
