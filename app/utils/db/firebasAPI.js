@@ -16,7 +16,7 @@ export default class firebaseAPI {
     }
 
     static get(option) {
-        const { ref, type } = option
+        const { ref } = option
 
         const prom = new Promise((resolve, reject)=>{
             firebase.database().ref(ref).once('value').then(snap=>{
