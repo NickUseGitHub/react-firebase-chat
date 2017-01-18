@@ -10,9 +10,15 @@ import { selectRoom } from '../actions/chatroom'
 
 class RoomList extends Component {
 
+    ref = '/Rooms'
+
     componentDidMount() {
         const { initRooms } = this.props
         firebaseAPI.attach({ref: this.ref, action: (snap) => initRooms({snap}) })
+    }
+
+    componentUnMount() {
+        firebaseAPI.distach({ref: this.ref})
     }
 
     selectRoom = (room) => () => {
