@@ -2,9 +2,9 @@ import firebase from 'firebase/app'
 import is from 'is_js'
 
 export default class firebaseAPI {
-    static add(option, item) {
+    static add(options, item) {
 
-        const { ref } = option
+        const { ref } = options
 
         const prom = new Promise((resolve, reject) => {
             const newItem = firebase.database().ref(ref).push()
@@ -15,8 +15,8 @@ export default class firebaseAPI {
         return prom
     }
 
-    static get(option) {
-        const { ref } = option
+    static get(options) {
+        const { ref } = options
 
         const prom = new Promise((resolve, reject)=>{
             firebase.database().ref(ref).once('value').then(snap=>{
@@ -27,13 +27,22 @@ export default class firebaseAPI {
         return prom
     }
 
-    static attach(option) {
-        const { ref, action } = option
+    static set(item, options) {
+        const { ref } = options
+        const prom = new Promise((resolve, reject)=>{
+            firebase.database().ref(ref).set(item)
+            resolve(item)
+        })
+        return prom
+    }
+
+    static attach(options) {
+        const { ref, action } = options
         firebase.database().ref(ref).on('value', action)
     }
 
-    static distach(option) {
-        const { ref } = option
+    static distach(options) {
+        const { ref } = options
         firebase.database().ref(ref).off()
     }
 }
