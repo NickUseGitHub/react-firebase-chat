@@ -27,7 +27,7 @@ export default class firebaseAPI {
         return prom
     }
 
-    static set(item, options) {
+    static set(options, item) {
         const { ref } = options
         const prom = new Promise((resolve, reject)=>{
             firebase.database().ref(ref).set(item)
