@@ -4,7 +4,7 @@ import { initDb } from '../lib/database/db'
 import firebaseAPI from '../utils/db/firebaseAPI'
 
 //action
-import { attachMessage, changeMessage } from '../actions/message'
+import { attachMessage, distachMessage } from '../actions/message'
 
 //Component
 import Messages from './chatrooms/Messages'
@@ -16,8 +16,13 @@ class ChatRoom extends Component {
     ref = null
     
     componentDidMount() {
-        const { onAttachMessage, changeMessage, selected_room_id } = this.props
+        const { onAttachMessage, selected_room_id } = this.props
         onAttachMessage(selected_room_id)
+    }
+
+    componentWillUpdate(nextProps, nextState) {
+        const { onDistachMessage, selected_room_id } = this.props
+        onDistachMessage(selected_room_id)
     }
 
     render() {
@@ -43,8 +48,8 @@ function mapStateToProps(state) {
 
 function mapActionToProps(dispatch) {
     return { 
-        onAttachMessage: attachMessage(dispatch), 
-        changeMessage
+        onAttachMessage: attachMessage(dispatch),
+        onDistachMessage: (selected_room_id) => dispatch(distachMessage(selected_room_id))
     }
 }
 
