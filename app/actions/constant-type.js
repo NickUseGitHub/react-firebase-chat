@@ -1,0 +1,1 @@
+export const NONE_CALL_REDUCER = 'NONE_CALL_REDUCER'

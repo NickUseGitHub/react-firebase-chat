@@ -1,3 +1,5 @@
+import { NONE_CALL_REDUCER } from './constant-type'
+
 function _initRooms(rooms) {
     return {
         type: 'INIT_ROOMS',
@@ -14,7 +16,7 @@ export function selectRoom(room) {
 
 export const attachRooms = dispatch => ref => {
     dispatch({
-        type: 'NONE_CALL_REDUCER',
+        type: NONE_CALL_REDUCER,
         database: {
             name: 'FIREBASE',
             method: 'attach',
