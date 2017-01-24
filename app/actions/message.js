@@ -9,11 +9,9 @@ export function changeMessage(payload) {
     return _changeMessage(payload)
 }
 
-export function attachMessage(dispatch) {
-    return (selected_room) => {
-        return {
-            type: 'MESSAGES_ATTACHED',
-            payload: { selected_room, cb: (snap) => dispatch(_changeMessage(snap)) }
-        }
-    } 
-}
+export const attachMessage = dispatch => selected_room => {
+    dispatch({
+        type: 'MESSAGES_ATTACHED',
+        payload: { selected_room, cb: () => console.log("Hello world") }
+    })
+} 
