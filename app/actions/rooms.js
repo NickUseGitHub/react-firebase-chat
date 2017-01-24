@@ -1,13 +1,26 @@
-export function initRooms(payload) {
+function _initRooms(rooms) {
     return {
         type: 'INIT_ROOMS',
-        payload
+        payload: { rooms }
     }
 }
 
-export function attachRooms(payload) {
+export function selectRoom(room) {
     return {
-        type: 'ATTACH_ROOMS',
-        payload
+        type: 'SELECT_ROOM',
+        payload: { room }
     }
+}
+
+export const attachRooms = dispatch => ref => {
+    console.log("rooms action -- attachRooms")
+    dispatch({
+        type: 'NONE_CALL_REDUCER',
+        database: {
+            name: 'FIREBASE',
+            method: 'attach',
+            isSocket: { cb: (rooms) => dispatch(_initRooms(rooms)) },
+            ref
+        }
+    })
 }

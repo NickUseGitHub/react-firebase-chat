@@ -5,20 +5,16 @@ import { Link } from 'react-router'
 import firebaseAPI from '../utils/db/firebaseAPI'
 
 //actions
-import { attachRooms, initRooms } from '../actions/rooms'
-import { selectRoom } from '../actions/chatroom'
+import { attachRooms, selectRoom } from '../actions/rooms'
 
 class RoomList extends Component {
 
     ref = '/Rooms'
 
     componentDidMount() {
-        const { initRooms } = this.props
-        firebaseAPI.attach(this.ref, (snap) => initRooms({snap}))
-    }
-
-    componentUnMount() {
-        firebaseAPI.distach(this.ref)
+        const { initRooms, onAttachRooms } = this.props
+        console.log("RoomList - componentDidMount")
+        onAttachRooms(this.ref)
     }
 
     selectRoom = (room) => () => {
@@ -45,4 +41,11 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { attachRooms, initRooms, selectRoom })(RoomList)
+function mapActionsToProps(dispatch) {
+    return { 
+        onAttachRooms: attachRooms(dispatch),
+        selectRoom 
+    }
+}
+
+export default connect(mapStateToProps, mapActionsToProps)(RoomList)

@@ -5,7 +5,6 @@ import firebaseAPI from '../utils/db/firebaseAPI'
 
 //action
 import { attachMessage, changeMessage } from '../actions/message'
-import { selectRoom } from '../actions/chatroom'
 
 //Component
 import Messages from './chatrooms/Messages'
@@ -47,8 +46,7 @@ function mapStateToProps(state) {
 function mapActionToProps(dispatch) {
     return { 
         onAttachMessage: attachMessage(dispatch), 
-        changeMessage, 
-        selectRoom 
+        changeMessage
     }
 }
 
