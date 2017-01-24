@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { initDb } from '../lib/database/db'
 import { Link } from 'react-router'
-import firebaseAPI from '../utils/db/firebaseAPI'
+import is from 'is_js'
 
 //actions
 import { attachRooms, selectRoom } from '../actions/rooms'
@@ -23,11 +23,21 @@ class RoomList extends Component {
 
     render() {
         const { rooms } = this.props
+        const renderRoom = rooms => {
+            if (is.empty(rooms)
+                || is.null(rooms)
+                || is.undefined(rooms)
+            ) {
+                return <li>loading...</li>
+            }
+
+            return rooms.map(room => <li onClick={this.selectRoom(room)} key={room._id}><Link to={`/${room._id}`}>{room.name}</Link></li>)
+        }
 
         return (
             <div className="col-xs-4 room-list">
                 <ul className="room-list">
-                    {rooms.map(room => <li onClick={this.selectRoom(room)} key={room._id}><Link to={`/${room._id}`}>{room.name}</Link></li>)}
+                    {renderRoom(rooms)}
                 </ul>
             </div>
         )

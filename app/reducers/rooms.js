@@ -3,7 +3,6 @@ import is from 'is_js'
 function getRooms(payload) {
     const newRooms = []
     const { rooms } = payload
-    console.log("getRooms", rooms)
 
     if (is.not.empty(rooms)
     && is.not.undefined(rooms)){

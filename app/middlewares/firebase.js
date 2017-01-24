@@ -6,10 +6,10 @@ export default store => next => action => {
 
     const { database, ...rest } = action
     if (is.not.empty(database)
-        || is.not.null(database)
-        || is.not.undefined(database)
+        && is.not.null(database)
+        && is.not.undefined(database)
     ) {
-        const { name, method, cb, isSocket, ref } = database
+        const { method, cb, isSocket, ref } = database
         // not call socket
         if ( (is.null(isSocket) || is.empty(isSocket) || is.undefined(isSocket)) 
             && isSocket
@@ -20,7 +20,6 @@ export default store => next => action => {
         }
         // call socket
         else {
-            console.log("firebaseMid", ref)
             firebaseAPI.attach(ref, cb)
         }
     }
