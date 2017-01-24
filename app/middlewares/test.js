@@ -5,9 +5,8 @@ export default store => next => action => {
 
     const { type, payload } = action
     if (type === 'MESSAGES_ATTACHED') {
-        const { cb, selected_room } = payload
+        const { selected_room, cb } = payload
         const ref = `/messages/${selected_room._id}`
-        console.log("ref", ref)
-        firebaseAPI.attach({ref, cb})
+        firebaseAPI.attach(ref, cb)
     }
 }

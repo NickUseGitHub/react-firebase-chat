@@ -14,11 +14,11 @@ class RoomList extends Component {
 
     componentDidMount() {
         const { initRooms } = this.props
-        firebaseAPI.attach({ref: this.ref, cb: (snap) => initRooms({snap}) })
+        firebaseAPI.attach(this.ref, (snap) => initRooms({snap}))
     }
 
     componentUnMount() {
-        firebaseAPI.distach({ref: this.ref})
+        firebaseAPI.distach(this.ref)
     }
 
     selectRoom = (room) => () => {
