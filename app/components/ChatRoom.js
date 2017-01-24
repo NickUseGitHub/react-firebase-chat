@@ -25,6 +25,11 @@ class ChatRoom extends Component {
         onDistachMessage(selected_room_id)
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        const { onAttachMessage, selected_room_id } = this.props
+        onAttachMessage(selected_room_id)
+    }
+
     render() {
         const { selected_room } = this.props
 
