@@ -13,7 +13,6 @@ class RoomList extends Component {
 
     componentDidMount() {
         const { initRooms, onAttachRooms } = this.props
-        console.log("RoomList - componentDidMount")
         onAttachRooms(this.ref)
     }
 

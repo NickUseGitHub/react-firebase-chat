@@ -9,25 +9,19 @@ export default store => next => action => {
         || is.not.null(database)
         || is.not.undefined(database)
     ) {
-        const { name, method, isSocket, ref } = database
-        console.log("database - name", name)
-        console.log("database - method", method)
-        console.log("database - isSocket", isSocket)
-        console.log("database - ref", ref)
+        const { name, method, cb, isSocket, ref } = database
+        // not call socket
+        if ( (is.null(isSocket) || is.empty(isSocket) || is.undefined(isSocket)) 
+            && isSocket
+        ) {
+            firebaseAPI[method](options).then(snap => {
+                cb(snap.val())
+            })
+        }
+        // call socket
+        else {
+            console.log("firebaseMid", ref)
+            firebaseAPI.attach(ref, cb)
+        }
     }
-    
-    // const { type, payload } = action
-    // if (type === 'MESSAGES_ATTACHED') {
-    //     const { selected_room, cb } = payload
-    //     const ref = `/messages/${selected_room._id}`
-    //     firebaseAPI.attach(ref, cb)
-    // }
-
-    // if (is.not.empty(database) 
-    // && is.not.undefined(database)) {
-    //     const { method, options } = database
-    //     firebaseAPI[method](options).then(snap => {
-    //         next({type, payload: {snap, ...rest} })
-    //     })
-    // }
 }
