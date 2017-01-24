@@ -19,9 +19,9 @@ export const attachMessage = dispatch => selected_room_id => {
         database: {
             name: 'FIREBASE',
             method: 'attach',
-            cb: (messages) => dispatch(_changeMessage(messages)),
             isSocket: true,
-            ref
+            ref: ref,
+            cb: (messages) => dispatch(_changeMessage(messages))
         }
     })
 } 

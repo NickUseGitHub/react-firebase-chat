@@ -36,13 +36,16 @@ export default class firebaseAPI {
         return prom
     }
 
-    static attach(ref, cb) {
+    static attach(options) {
+        const { ref, cb } = options
+
         firebase.database().ref(ref).on('value', snap => {
             cb(snap.val())
         })
     }
 
-    static distach(ref) {
+    static distach(options) {
+        const { ref } = options
         firebase.database().ref(ref).off()
     }
 }

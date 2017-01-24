@@ -20,9 +20,9 @@ export const attachRooms = dispatch => ref => {
         database: {
             name: 'FIREBASE',
             method: 'attach',
-            cb: (rooms) => dispatch(_initRooms(rooms)),
             isSocket: true,
-            ref
+            ref: ref,
+            cb: (rooms) => dispatch(_initRooms(rooms))
         }
     })
 }

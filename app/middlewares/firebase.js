@@ -9,7 +9,7 @@ export default store => next => action => {
         && is.not.null(database)
         && is.not.undefined(database)
     ) {
-        const { method, cb, isSocket, ref } = database
+        const { name, method, isSocket, ...options } = database
         // not call socket
         if ( (is.null(isSocket) || is.empty(isSocket) || is.undefined(isSocket)) 
             && isSocket
@@ -20,7 +20,7 @@ export default store => next => action => {
         }
         // call socket
         else {
-            firebaseAPI.attach(ref, cb)
+            firebaseAPI[method](options)
         }
     }
 }
