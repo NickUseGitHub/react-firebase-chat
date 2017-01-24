@@ -53,7 +53,7 @@ function mapStateToProps(state) {
 function mapActionsToProps(dispatch) {
     return { 
         onAttachRooms: attachRooms(dispatch),
-        selectRoom 
+        selectRoom: room => dispatch(selectRoom(room))
     }
 }
 
