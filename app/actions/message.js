@@ -1,7 +1,7 @@
-function _changeMessage(payload) {
+function _changeMessage(messages) {
     return {
         type: 'MESSAGES_CHANGED',
-        payload
+        payload: { messages }
     }
 }
 
@@ -12,6 +12,6 @@ export function changeMessage(payload) {
 export const attachMessage = dispatch => selected_room => {
     dispatch({
         type: 'MESSAGES_ATTACHED',
-        payload: { selected_room, cb: (snap) => dispatch(_changeMessage({snap})) }
+        payload: { selected_room, cb: (messages) => dispatch(_changeMessage(messages)) }
     })
 } 

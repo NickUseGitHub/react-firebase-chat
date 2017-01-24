@@ -1,14 +1,14 @@
 import is from 'is_js'
 
 function getMessage(payload) {
-    const messages = []
-    const { snap } = payload
+    const newMessages = []
+    const { messages } = payload
     
-    if (is.not.empty(snap)
-    && is.not.undefined(snap)) {
-        Object.keys(snap).forEach(message_key=>messages.push(snap[message_key]))
+    if (is.not.empty(messages)
+    && is.not.undefined(messages)) {
+        Object.keys(messages).forEach( message_key => newMessages.push(messages[message_key]) )
     }
-    return messages
+    return newMessages
 }
 
 export default function(messages = [], action) {
