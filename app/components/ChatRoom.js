@@ -17,8 +17,6 @@ class ChatRoom extends Component {
     
     componentDidMount() {
         const { onAttachMessage, changeMessage, selected_room } = this.props
-        // this.ref = `/messages/${selected_room._id}`
-        // firebaseAPI.attach({ref: this.ref, cb: (snap) => changeMessage({snap}) })
         onAttachMessage(selected_room)
     }
 

@@ -1,3 +1,5 @@
+import { NONE_CALL_REDUCER } from './constant-type'
+
 function _changeMessage(messages) {
     return {
         type: 'MESSAGES_CHANGED',
@@ -10,8 +12,16 @@ export function changeMessage(payload) {
 }
 
 export const attachMessage = dispatch => selected_room => {
+    const ref = `/messages/${selected_room._id}`
+
     dispatch({
-        type: 'MESSAGES_ATTACHED',
-        payload: { selected_room, cb: (messages) => dispatch(_changeMessage(messages)) }
+        type: NONE_CALL_REDUCER,
+        database: {
+            name: 'FIREBASE',
+            method: 'attach',
+            cb: (messages) => dispatch(_changeMessage(messages)),
+            isSocket: true,
+            ref
+        }
     })
 } 
