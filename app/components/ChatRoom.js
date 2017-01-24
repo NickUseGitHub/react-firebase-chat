@@ -17,10 +17,10 @@ class ChatRoom extends Component {
     ref = null
     
     componentDidMount() {
-        const { attachMessage, changeMessage, selected_room } = this.props
+        const { onAttachMessage, changeMessage, selected_room } = this.props
         this.ref = `/messages/${selected_room._id}`
         firebaseAPI.attach({ref: this.ref, cb: (snap) => changeMessage({snap}) })
-        attachMessage(selected_room)
+        onAttachMessage(selected_room)
     }
 
     render() {
@@ -44,4 +44,12 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { attachMessage, changeMessage, selectRoom })(ChatRoom)
+function mapActionToProps(dispatch) {
+    return { 
+        onAttachMessage: attachMessage(dispatch), 
+        changeMessage, 
+        selectRoom 
+    }
+}
+
+export default connect(mapStateToProps, mapActionToProps)(ChatRoom)
