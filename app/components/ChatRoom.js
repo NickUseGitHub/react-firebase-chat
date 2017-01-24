@@ -4,7 +4,7 @@ import { initDb } from '../lib/database/db'
 import firebaseAPI from '../utils/db/firebaseAPI'
 
 //action
-import { changeMessage } from '../actions/message'
+import { attachMessage, changeMessage } from '../actions/message'
 import { selectRoom } from '../actions/chatroom'
 
 //Component
@@ -17,9 +17,10 @@ class ChatRoom extends Component {
     ref = null
     
     componentDidMount() {
-        const { selected_room, changeMessage } = this.props
+        const { attachMessage, changeMessage, selected_room } = this.props
         this.ref = `/messages/${selected_room._id}`
         firebaseAPI.attach({ref: this.ref, cb: (snap) => changeMessage({snap}) })
+        attachMessage(selected_room)
     }
 
     render() {
@@ -43,4 +44,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { changeMessage, selectRoom })(ChatRoom)
+export default connect(mapStateToProps, { attachMessage, changeMessage, selectRoom })(ChatRoom)

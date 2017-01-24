@@ -9,6 +9,7 @@ import firebaseConf from './config/firebase'
 
 //import middlewares
 import firebaseMiddleware from './middlewares/firebase'
+import testMiddleware from './middlewares/test'
 
 //init routes
 import routes from './routes'
@@ -16,7 +17,7 @@ import routes from './routes'
 firebase.initializeApp(firebaseConf)
 
 //middlewares
-const middlewares = [firebaseMiddleware]
+const middlewares = [firebaseMiddleware, testMiddleware]
 
 //call appReducers
 import appReducers from './app-reducers'
