@@ -11,8 +11,8 @@ export function changeMessage(payload) {
     return _changeMessage(payload)
 }
 
-export const attachMessage = dispatch => selected_room => {
-    const ref = `/messages/${selected_room._id}`
+export const attachMessage = dispatch => selected_room_id => {
+    const ref = `/messages/${selected_room_id}`
 
     dispatch({
         type: NONE_CALL_REDUCER,

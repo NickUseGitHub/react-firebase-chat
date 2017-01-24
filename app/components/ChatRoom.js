@@ -16,8 +16,8 @@ class ChatRoom extends Component {
     ref = null
     
     componentDidMount() {
-        const { onAttachMessage, changeMessage, selected_room } = this.props
-        onAttachMessage(selected_room)
+        const { onAttachMessage, changeMessage, selected_room_id } = this.props
+        onAttachMessage(selected_room_id)
     }
 
     render() {
@@ -37,7 +37,7 @@ class ChatRoom extends Component {
 
 function mapStateToProps(state) {
     return {
-        selected_room: state.selected_room
+        selected_room_id: state.selected_room_id
     }
 }
 

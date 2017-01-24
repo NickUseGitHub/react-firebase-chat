@@ -7,10 +7,10 @@ function _initRooms(rooms) {
     }
 }
 
-export function selectRoom(room) {
+export function selectRoom(room_id) {
     return {
         type: 'SELECT_ROOM',
-        payload: { room }
+        payload: { room_id }
     }
 }
 

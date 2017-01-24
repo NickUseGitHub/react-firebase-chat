@@ -18,7 +18,7 @@ class RoomList extends Component {
 
     selectRoom = (room) => () => {
         const { selectRoom } = this.props
-        selectRoom(room)
+        selectRoom(room._id)
     }
 
     render() {
@@ -53,7 +53,7 @@ function mapStateToProps(state) {
 function mapActionsToProps(dispatch) {
     return { 
         onAttachRooms: attachRooms(dispatch),
-        selectRoom: room => dispatch(selectRoom(room))
+        selectRoom: room_id => dispatch(selectRoom(room_id))
     }
 }
 

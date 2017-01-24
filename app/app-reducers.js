@@ -10,5 +10,5 @@ export default combineReducers({
     messages: messageReducer,
     member: memberReducer,
     rooms: roomsReducer,
-    selected_room: selectedRoomReducer
+    selected_room_id: selectedRoomReducer
 })
