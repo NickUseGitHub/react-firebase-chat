@@ -5,7 +5,8 @@ function getRooms(payload) {
     const { rooms } = payload
 
     if (is.not.empty(rooms)
-    && is.not.undefined(rooms)){
+    && is.not.undefined(rooms)
+    && is.not.null(rooms)){
         Object.keys(rooms).forEach(room_key => newRooms.push(rooms[room_key]))
     }
 

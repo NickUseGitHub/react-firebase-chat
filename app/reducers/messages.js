@@ -5,7 +5,8 @@ function getMessage(payload) {
     const { messages } = payload
     
     if (is.not.empty(messages)
-    && is.not.undefined(messages)) {
+    && is.not.undefined(messages)
+    && is.not.null(messages)) {
         Object.keys(messages).forEach( message_key => newMessages.push(messages[message_key]) )
     }
     return newMessages
