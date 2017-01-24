@@ -9,7 +9,7 @@ export default {
     app: path.resolve(appPath, './main.js')
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /.jsx?$/,
         loader: 'babel',
