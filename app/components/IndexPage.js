@@ -12,11 +12,6 @@ import RoomTools from './RoomTools'
 
 class IndexPage extends Component {
 
-    componentWillMount() {
-        // const { initFirebaseDb } = this.props
-        // initFirebaseDb(firebase.database())
-    }
-
     render() {
         return (
             <div className="row">
