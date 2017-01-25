@@ -4,6 +4,8 @@ export default function(messages = [], action) {
     const { type, payload } = action
     
     switch(type) {
+        case 'SELECT_ROOM':
+            return []
         case 'ADD_MESSAGE': 
             return Object.assign({}, messages.concat(payload.messages))
         case 'MESSAGES_CHANGED':
