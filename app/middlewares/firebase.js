@@ -1,26 +1,20 @@
-import is from 'is_js'
 import firebaseAPI from '../utils/db/firebaseAPI'
 
 export default store => next => action => {
-    next(action)
+    const { database, type, ...rest } = action
+    if (!database) {
+        return next(action)
+    }
 
-    const { database, ...rest } = action
-    if (is.not.empty(database)
-        && is.not.null(database)
-        && is.not.undefined(database)
-    ) {
-        const { name, method, isSocket, ...options } = database
-        // not call socket
-        if ( (is.null(isSocket) || is.empty(isSocket) || is.undefined(isSocket)) 
-            && isSocket
-        ) {
-            firebaseAPI[method](options).then(result => {
-                cb(result)
-            })
-        }
-        // call socket
-        else {
-            firebaseAPI[method](options)
-        }
+    const { name, method, isSocket, ...options } = database
+    // not call socket
+    if (!isSocket) {
+        firebaseAPI[method](options).then(result => {
+            return next({type, ...rest})
+        })
+    }
+    // call socket
+    else {
+        firebaseAPI[method](options)
     }
 }

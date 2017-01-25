@@ -27,3 +27,15 @@ export const attachRooms = dispatch => ref => {
         }
     })
 }
+
+export function addRoom(roomName) {
+    return {
+        type: 'ADD_ROOM',
+        payload:{ roomName },
+        database: {
+            name: 'FIREBASE',
+            method: 'add',
+            ref: `/Rooms`
+        }
+    }
+}
