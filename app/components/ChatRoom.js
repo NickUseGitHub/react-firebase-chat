@@ -35,7 +35,6 @@ class ChatRoom extends Component {
 
         return (
             <div className="col-xs-8 chatroom">
-                <h2>{ selected_room? selected_room.name : 'loading...' }</h2>
                 <div className="row">
                     <Messages />
                     <TextBox />
