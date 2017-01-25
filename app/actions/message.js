@@ -26,6 +26,20 @@ export function distachMessage(selected_room_id) {
     }
 }
 
+export function addMessage(message, ref) {
+    return {
+        type: 'ADD_MESSAGE',
+        payload: {message},
+        database: {
+            name: 'FIREBASE',
+            item: message,
+            key: 'room',
+            method: 'add',
+            ref: ref
+        }
+    }
+}
+
 export const attachMessage = dispatch => selected_room_id => {
     dispatch({
         type: NONE_CALL_REDUCER,
@@ -38,4 +52,4 @@ export const attachMessage = dispatch => selected_room_id => {
             cb: (messages) => dispatch(_changeMessage(messages))
         }
     })
-} 
+}

@@ -12,7 +12,6 @@ export default store => next => action => {
         const { key } = options
 
         firebaseAPI[method](options).then(result => {
-            console.log(type)
             return next({ ...rest, type })
         })
     }
