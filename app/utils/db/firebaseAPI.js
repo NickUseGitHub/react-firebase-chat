@@ -2,9 +2,7 @@ import firebase from 'firebase/app'
 import is from 'is_js'
 
 function convertValue(result_type, result) {
-    if (is.empty(result_type)
-    || is.undefined(result_type)
-    || is.null(result_type)) {
+    if (!result_type || !result){
         return result
     }
 
@@ -63,6 +61,10 @@ export default class firebaseAPI {
 
     static distach(options) {
         const { ref } = options
-        firebase.database().ref(ref).off()
+        const prom = new Promise((resolve, reject) => {
+            firebase.database().ref(ref).off()
+            resolve("success")
+        })
+        return prom
     }
 }

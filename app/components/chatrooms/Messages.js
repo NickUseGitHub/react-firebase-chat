@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import is from 'is_js'
 import { connect } from 'react-redux'
 import { changeMessage } from '../../actions/message'
 
 class Messages extends Component {
 
     renderMessage() {
-        if (is.empty(this.props.messages)) {
+        const { messages } = this.props
+        if (!messages) {
             return <li>no message</li>
         }
 

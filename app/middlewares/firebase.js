@@ -12,7 +12,8 @@ export default store => next => action => {
         const { key } = options
 
         firebaseAPI[method](options).then(result => {
-            return next({...rest, type, payload: {[key]: result}})
+            console.log(type)
+            return next({ ...rest, type })
         })
     }
     // call socket
