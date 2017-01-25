@@ -9,8 +9,10 @@ export default store => next => action => {
     const { name, method, isSocket, ...options } = database
     // not call socket
     if (!isSocket) {
+        const { key } = options
+
         firebaseAPI[method](options).then(result => {
-            return next({type, ...rest})
+            return next({...rest, type, payload: {[key]: result}})
         })
     }
     // call socket

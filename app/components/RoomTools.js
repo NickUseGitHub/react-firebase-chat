@@ -1,6 +1,9 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 
+//actions
+import { addRoom } from '../actions/rooms'
+
 class RoomTools extends Component {
 
     state = {
@@ -11,8 +14,9 @@ class RoomTools extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        const { member } = this.props
+        const { member, addRoom } = this.props
         const room = { name : this.state.roomName , member }
+        addRoom(room)
     } 
 
     render() {
@@ -33,4 +37,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(RoomTools);
+export default connect(mapStateToProps, { addRoom })(RoomTools);

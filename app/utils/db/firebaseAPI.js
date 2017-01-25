@@ -19,9 +19,9 @@ function convertValue(result_type, result) {
 }
 
 export default class firebaseAPI {
-    static add(options, item) {
+    static add(options) {
 
-        const { ref } = options
+        const { item, ref } = options
 
         const prom = new Promise((resolve, reject) => {
             const newItem = firebase.database().ref(ref).push()
