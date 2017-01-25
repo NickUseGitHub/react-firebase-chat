@@ -32,7 +32,7 @@ class RoomList extends Component {
             }
             const btnClass = (room) => room._id == selected_room_id? 'btn btn-xs btn-success' : 'btn btn-xs btn-default'
 
-            return rooms.map(room => <li key={room._id}><button className={btnClass(room)} onClick={this.selectRoomId(room)}><Link to={`/${room._id}`}>{room.name}</Link></button></li>)
+            return rooms.map(room => <li key={room._id}><Link to={`/${room._id}`} onClick={this.selectRoomId(room)}><button className={btnClass(room)} >{room.name}</button></Link></li>)
         }
 
         return (
