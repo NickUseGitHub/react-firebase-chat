@@ -13,8 +13,6 @@ import TextBox from './chatrooms/TextBox'
 
 class ChatRoom extends Component {
 
-    ref = null
-    
     componentDidMount() {
         const { onAttachMessage, selected_room_id } = this.props
         onAttachMessage(selected_room_id)
