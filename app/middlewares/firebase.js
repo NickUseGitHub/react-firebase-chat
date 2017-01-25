@@ -14,8 +14,8 @@ export default store => next => action => {
         if ( (is.null(isSocket) || is.empty(isSocket) || is.undefined(isSocket)) 
             && isSocket
         ) {
-            firebaseAPI[method](options).then(snap => {
-                cb(snap.val())
+            firebaseAPI[method](options).then(result => {
+                cb(result)
             })
         }
         // call socket

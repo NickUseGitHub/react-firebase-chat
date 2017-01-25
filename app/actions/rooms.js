@@ -22,6 +22,7 @@ export const attachRooms = dispatch => ref => {
             method: 'attach',
             isSocket: true,
             ref: ref,
+            result_type: 'list',
             cb: (rooms) => dispatch(_initRooms(rooms))
         }
     })

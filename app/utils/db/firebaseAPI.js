@@ -1,6 +1,23 @@
 import firebase from 'firebase/app'
 import is from 'is_js'
 
+function convertValue(result_type, result) {
+    if (is.empty(result_type)
+    || is.undefined(result_type)
+    || is.null(result_type)) {
+        return result
+    }
+
+    if (result_type !== 'list') {
+        return result
+    }
+
+    const newResult = []
+    Object.keys(result).forEach( result_key => newResult.push(result[result_key]) )
+    
+    return newResult
+}
+
 export default class firebaseAPI {
     static add(options, item) {
 
@@ -37,10 +54,10 @@ export default class firebaseAPI {
     }
 
     static attach(options) {
-        const { ref, cb } = options
+        const { cb, ref, result_type } = options
 
         firebase.database().ref(ref).on('value', snap => {
-            cb(snap.val())
+            cb(convertValue(result_type, snap.val()))
         })
     }
 

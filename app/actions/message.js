@@ -34,6 +34,7 @@ export const attachMessage = dispatch => selected_room_id => {
             method: 'attach',
             isSocket: true,
             ref: _getRef(selected_room_id),
+            result_type: 'list',
             cb: (messages) => dispatch(_changeMessage(messages))
         }
     })
