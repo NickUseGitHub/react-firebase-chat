@@ -22,16 +22,17 @@ class RoomList extends Component {
     }
 
     render() {
-        const { rooms } = this.props
-        const renderRoom = rooms => {
+        const { rooms, selected_room_id } = this.props
+        const renderRoom = (rooms) => {
             if (is.empty(rooms)
                 || is.null(rooms)
                 || is.undefined(rooms)
             ) {
                 return <li>loading...</li>
             }
+            const btnClass = (room) => room._id == selected_room_id? 'btn btn-xs btn-success' : 'btn btn-xs btn-default'
 
-            return rooms.map(room => <li onClick={this.selectRoomId(room)} key={room._id}><Link to={`/${room._id}`}>{room.name}</Link></li>)
+            return rooms.map(room => <li key={room._id}><button className={btnClass(room)} onClick={this.selectRoomId(room)}><Link to={`/${room._id}`}>{room.name}</Link></button></li>)
         }
 
         return (
@@ -46,7 +47,8 @@ class RoomList extends Component {
 
 function mapStateToProps(state) {
     return {
-        rooms: state.rooms
+        rooms: state.rooms,
+        selected_room_id: state.selected_room_id
     }
 }
 
