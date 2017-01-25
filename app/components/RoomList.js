@@ -5,7 +5,7 @@ import { Link } from 'react-router'
 import is from 'is_js'
 
 //actions
-import { attachRooms, selectRoom } from '../actions/rooms'
+import { attachRooms, selectRoomId } from '../actions/rooms'
 
 class RoomList extends Component {
 
@@ -16,9 +16,9 @@ class RoomList extends Component {
         onAttachRooms(this.ref)
     }
 
-    selectRoom = (room) => () => {
-        const { selectRoom } = this.props
-        selectRoom(room._id)
+    selectRoomId = (room) => () => {
+        const { selectRoomId } = this.props
+        selectRoomId(room._id)
     }
 
     render() {
@@ -31,7 +31,7 @@ class RoomList extends Component {
                 return <li>loading...</li>
             }
 
-            return rooms.map(room => <li onClick={this.selectRoom(room)} key={room._id}><Link to={`/${room._id}`}>{room.name}</Link></li>)
+            return rooms.map(room => <li onClick={this.selectRoomId(room)} key={room._id}><Link to={`/${room._id}`}>{room.name}</Link></li>)
         }
 
         return (
@@ -53,7 +53,7 @@ function mapStateToProps(state) {
 function mapActionsToProps(dispatch) {
     return { 
         onAttachRooms: attachRooms(dispatch),
-        selectRoom: room_id => dispatch(selectRoom(room_id))
+        selectRoomId: room_id => dispatch(selectRoomId(room_id))
     }
 }
 

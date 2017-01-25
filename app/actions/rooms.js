@@ -7,7 +7,7 @@ function _initRooms(rooms) {
     }
 }
 
-export function selectRoom(room_id) {
+export function selectRoomId(room_id) {
     return {
         type: 'SELECT_ROOM',
         payload: { room_id }

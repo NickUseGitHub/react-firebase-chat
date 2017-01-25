@@ -4,7 +4,7 @@ import is from 'is_js'
 import firebase from 'firebase/app'
 
 //action creator
-import { selectRoom } from '../actions/rooms'
+import { selectRoomId } from '../actions/rooms'
 
 //Components
 import RoomList from './RoomList'
@@ -13,9 +13,9 @@ import RoomTools from './RoomTools'
 class IndexPage extends Component {
 
     componentWillMount() {
-        const { params, selectRoom } = this.props
+        const { params, selectRoomId } = this.props
         const { chatRoomId } = params
-        selectRoom(chatRoomId)
+        selectRoomId(chatRoomId)
     }
 
     render() {
@@ -36,4 +36,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { selectRoom })(IndexPage)
+export default connect(mapStateToProps, { selectRoomId })(IndexPage)
