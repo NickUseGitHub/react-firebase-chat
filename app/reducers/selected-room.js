@@ -1,9 +1,10 @@
-export default function(room_id = null, action) {
+export default function(prev_room_id = null, action) {
     const { type, payload } = action
 
     switch(type) {
         case 'SELECT_ROOM': 
-            return payload.room_id
-        default: return room_id
+            const { room_id } = payload
+            return room_id || prev_room_id
+        default: return prev_room_id
     }
 }
