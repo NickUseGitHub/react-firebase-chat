@@ -1,23 +1,10 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
-import { initDb } from '../lib/database/db'
 
 class RoomTools extends Component {
 
     state = {
         roomName: ''
-    }
-
-    db = null
-
-    constructor(props) {
-        super(props)
-        this.createDB(props)
-    }
-
-    createDB(props) {
-        const { firebaseDB } = props
-        // this.db = initDb(firebaseDB.ref('/Rooms'))
     }
 
     handleInputChange = type => e => this.setState({ [type]: e.target.value })
@@ -26,9 +13,6 @@ class RoomTools extends Component {
         e.preventDefault()
         const { member } = this.props
         const room = { name : this.state.roomName , member }
-        this.db.add(room).then(res => {
-            this.setState({roomName: ''})
-        })
     } 
 
     render() {
@@ -45,7 +29,6 @@ class RoomTools extends Component {
 
 function mapStateToProps(state) {
     return {
-        firebaseDB: state.firebaseDB,
         member: state.member
     }
 }
